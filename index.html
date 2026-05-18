@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>쩡이의 웹</title>
+</head>
+<body>
+  <h1>데이터 가져오기 테스트</h1>
+  <button id="getDataBtn">눌러봐</button>
+  <p id="result"></p>
+
+  <script>
+    // 아까 복사해둔 구글 놈들 URL
+    const scriptUrl = '여기에_네가_복사한_웹앱_링크를_때려넣어';
+
+    document.getElementById('getDataBtn').addEventListener('click', () => {
+      fetch(scriptUrl)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          // 구글에서 던져준 메시지를 화면에 꽂아버림
+          document.getElementById('result').innerText = data.message;
+        })
+        .catch(error => console.error('에러 났잖아:', error));
+    });
+  </script>
+</body>
+</html>
